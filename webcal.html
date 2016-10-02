@@ -5,7 +5,11 @@
 <body>
   <input type="textbox" id="textbox1" style="WIDTH: 85pt">
   <script>
+  var yuns;
+  var num = 0;
   var tmp = 0;
+  var answer;
+  textbox1.value = tmp;
   </script>
   <p></p>
   <input type="button" id="button1" onclick="button1_click();" style="WIDTH: 20pt" value="1">
@@ -32,8 +36,9 @@
   <input type="button" id="plus" onclick="plus_click();" style="WIDTH: 20pt" value="+">
   <script>
   function plus_click() {
-    textbox1.value="4";
-    var tmp = 4;
+    num = tmp;
+    tmp = 0;
+    yuns = 1;
   }
   </script>
   <p></p>
@@ -59,6 +64,13 @@
   }
   </script>
   <input type="button" id="minus" onclick="minus_click();" style="WIDTH: 20pt" value="-">
+  <script>
+  function minus_click() {
+    num = tmp;
+    tmp = 0;
+    yuns = 2;
+  }
+  </script>
   <p></p>
   <input type="button" id="button7" onclick="button7_click();" style="WIDTH: 20pt" value="7">
   <script>
@@ -82,6 +94,13 @@
   }
   </script>
   <input type="button" id="multi" onclick="multi_click();" style="WIDTH: 20pt" value="*">
+  <script>
+  function multi_click() {
+    num = tmp;
+    tmp = 0;
+    yuns = 3;
+  }
+  </script>
   <p></p>
   <input type="button" id="button0" onclick="button0_click();" style="WIDTH: 20pt" value="0">
   <script>
@@ -91,7 +110,32 @@
   }
   </script>
   <input type="button" id="result" onclick="result_click();" style="WIDTH: 20pt" value="=">
+  <script>
+  function result_click() {
+    switch (yuns) {
+      case 1 : ans = num + tmp; break;
+      case 2 : ans = num - tmp; break;
+      case 3 : ans = num * tmp; break;
+      case 4 : ans = num / tmp; break;
+      default : break;
+    }
+    textbox1.value = ans;
+  }
+  </script>
   <input type="button" id="initial" onclick="initial_click();" style="WIDTH: 20pt" value="C">
+  <script>
+  function initial_click() {
+    tmp = 0;
+    textbox1.value = tmp;
+  }
+  </script>
   <input type="button" id="divis" onclick="divis_click();" style="WIDTH: 20pt" value="/">
+  <script>
+  function divis_click() {
+    num = tmp;
+    tmp = 0;
+    yuns = 4;
+  }
+  </script>
   <p></p>
 </body>
