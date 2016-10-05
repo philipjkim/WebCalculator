@@ -10,107 +10,19 @@
   var tmp = 0;
   var answer;
   textbox1.value = tmp;
-  </script>
-  <p></p>
-  <input type="button" id="button1" onclick="button1_click();" style="WIDTH: 20pt" value="1">
-  <script>
-  function button1_click() {
-    tmp = (tmp * 10) + 1;
+  function clickNum(n) {
+    tmp = (tmp * 10) + n;
     textbox1.value = tmp;
   }
-  </script>
-  <input type="button" id="button2" onclick="button2_click();" style="WIDTH: 20pt" value="2">
-  <script>
-  function button2_click() {
-    tmp = (tmp * 10) + 2;
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="button3" onclick="button3_click();" style="WIDTH: 20pt" value="3">
-  <script>
-  function button3_click() {
-    tmp = (tmp * 10) + 3;
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="plus" onclick="plus_click();" style="WIDTH: 20pt" value="+">
-  <script>
-  function plus_click() {
+  const OP_PLUS = 1;
+  const OP_MINUS = 2;
+  const OP_MULTI = 3;
+  const OP_DIV = 4;
+  function clickOp(n) {
     num = tmp;
     tmp = 0;
-    yuns = 1;
+    yuns = n;
   }
-  </script>
-  <p></p>
-  <input type="button" id="button4" onclick="button4_click();" style="WIDTH: 20pt" value="4">
-  <script>
-  function button4_click() {
-    tmp = (tmp * 10) + 4;
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="button5" onclick="button5_click();" style="WIDTH: 20pt" value="5">
-  <script>
-  function button5_click() {
-    tmp = (tmp * 10) + 5;
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="button6" onclick="button6_click();" style="WIDTH: 20pt" value="6">
-  <script>
-  function button6_click() {
-    tmp = (tmp * 10) + 6;
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="minus" onclick="minus_click();" style="WIDTH: 20pt" value="-">
-  <script>
-  function minus_click() {
-    num = tmp;
-    tmp = 0;
-    yuns = 2;
-  }
-  </script>
-  <p></p>
-  <input type="button" id="button7" onclick="button7_click();" style="WIDTH: 20pt" value="7">
-  <script>
-  function button7_click() {
-    tmp = (tmp * 10) + 7;
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="button8" onclick="button8_click();" style="WIDTH: 20pt" value="8">
-  <script>
-  function button8_click() {
-    tmp = (tmp * 10) + 8;
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="button9" onclick="button9_click();" style="WIDTH: 20pt" value="9">
-  <script>
-  function button9_click() {
-    tmp = (tmp * 10) + 9;
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="multi" onclick="multi_click();" style="WIDTH: 20pt" value="*">
-  <script>
-  function multi_click() {
-    num = tmp;
-    tmp = 0;
-    yuns = 3;
-  }
-  </script>
-  <p></p>
-  <input type="button" id="button0" onclick="button0_click();" style="WIDTH: 20pt" value="0">
-  <script>
-  function button0_click() {
-    tmp = (tmp * 10);
-    textbox1.value = tmp;
-  }
-  </script>
-  <input type="button" id="result" onclick="result_click();" style="WIDTH: 20pt" value="=">
-  <script>
   function result_click() {
     switch (yuns) {
       case 1 : ans = num + tmp; break;
@@ -121,21 +33,30 @@
     }
     textbox1.value = ans;
   }
-  </script>
-  <input type="button" id="initial" onclick="initial_click();" style="WIDTH: 20pt" value="C">
-  <script>
   function initial_click() {
     tmp = 0;
     textbox1.value = tmp;
   }
   </script>
-  <input type="button" id="divis" onclick="divis_click();" style="WIDTH: 20pt" value="/">
-  <script>
-  function divis_click() {
-    num = tmp;
-    tmp = 0;
-    yuns = 4;
-  }
-  </script>
+  <p></p>
+  <input type="button" id="button1" onclick="clickNum(1);" style="WIDTH: 20pt" value="1">
+  <input type="button" id="button2" onclick="clickNum(2);" style="WIDTH: 20pt" value="2">
+  <input type="button" id="button3" onclick="clickNum(3);" style="WIDTH: 20pt" value="3">
+  <input type="button" id="plus" onclick="clickOp(OP_PLUS);" style="WIDTH: 20pt" value="+">
+  <p></p>
+  <input type="button" id="button4" onclick="clickNum(4);" style="WIDTH: 20pt" value="4">
+  <input type="button" id="button5" onclick="clickNum(5);" style="WIDTH: 20pt" value="5">
+  <input type="button" id="button6" onclick="clickNum(6);" style="WIDTH: 20pt" value="6">
+  <input type="button" id="minus" onclick="clickOp(OP_MINUS);" style="WIDTH: 20pt" value="-">
+  <p></p>
+  <input type="button" id="button7" onclick="clickNum(7);" style="WIDTH: 20pt" value="7">
+  <input type="button" id="button8" onclick="clickNum(8);" style="WIDTH: 20pt" value="8">
+  <input type="button" id="button9" onclick="clickNum(9);" style="WIDTH: 20pt" value="9">
+  <input type="button" id="multi" onclick="clickOp(OP_MULTI);" style="WIDTH: 20pt" value="*">
+  <p></p>
+  <input type="button" id="button0" onclick="clickNum(0);" style="WIDTH: 20pt" value="0">
+  <input type="button" id="result" onclick="result_click();" style="WIDTH: 20pt" value="=">
+  <input type="button" id="initial" onclick="initial_click();" style="WIDTH: 20pt" value="C">
+  <input type="button" id="divis" onclick="clickOp(OP_DIV);" style="WIDTH: 20pt" value="/">
   <p></p>
 </body>
