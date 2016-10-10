@@ -5,7 +5,7 @@
 <body>
   <input type="textbox" id="textbox1" style="WIDTH: 85pt">
   <script>
-  var yuns;
+  var yuns = 0;
   var num = 0;
   var tmp = 0;
   var answer;
@@ -19,9 +19,23 @@
   const OP_MULTI = 3;
   const OP_DIV = 4;
   function clickOp(n) {
-    num = tmp;
-    tmp = 0;
-    yuns = n;
+    if( yuns != 0 ) {
+      switch (yuns) {
+        case 1 : num = num + tmp; break;
+        case 2 : num = num - tmp; break;
+        case 3 : num = num * tmp; break;
+        case 4 : num = num / tmp; break;
+        default : break;
+      }
+      yuns = n;
+      tmp = 0;
+      textbox1.value = num;
+    }
+    else {
+      num = tmp;
+      tmp = 0;
+      yuns = n;
+    }
   }
   function result_click() {
     switch (yuns) {
@@ -32,8 +46,10 @@
       default : break;
     }
     textbox1.value = ans;
+    yuns = 0;
   }
   function initial_click() {
+    yuns = 0;
     tmp = 0;
     textbox1.value = tmp;
   }
